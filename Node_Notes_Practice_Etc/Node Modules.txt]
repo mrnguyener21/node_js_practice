@@ -1,0 +1,16 @@
+OS MODULE 
+the os module lets you get information on your operation system(os)
+const os = require('os') // this is the most common way to set the os module to a variable
+lets you create things around your system
+
+PATH
+
+HTTP
+
+FS
+
+EVENTS
+
+BUFFERS
+
+STREAMS
