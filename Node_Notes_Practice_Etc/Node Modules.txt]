@@ -4,6 +4,11 @@ const os = require('os') // this is the most common way to set the os module to 
 lets you create things around your system
 
 PATH
+the path module is for editing the path to reach different files and getting different results from the path itself
+you just have to require 'path' and from there you can access the different functions for the path module
+ususally you just set it to a variable
+const path = require('path')
+'C:\\temp\\myfile.html' is an example of what a path is. the path module will then edit around it
 
 HTTP
 
