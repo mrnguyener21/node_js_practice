@@ -26,9 +26,9 @@
         // also maintas a pool of sockets which is key for performance reasons
         //in simple terms the agent is the middle man that takes all the requests from the server and turn that into a list(this is the queue, can even be a queue of 1 request) for the http socket to receive in a manageable manner to keep the connection steady.
         //all the methods with the agent deals with keeping connections, the socket whether to keep it alive or destroy it and the requests from the server it's queueing 
-        
-    // http.ClienRequest
 
+    // http.ClientRequest
+        
     // http.server
 
     // http.ServerResponse
