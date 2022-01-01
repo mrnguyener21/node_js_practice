@@ -49,7 +49,7 @@ const movies = [
     {
         id: 3,
         title: 'Birthday Movie',
-        price: 300,        
+        price: 100,        
     }
 ]
 
@@ -60,6 +60,26 @@ app.get('/', (req,res) =>{
 
 app.get('/movies', (req, res) => {
     res.status(200).json({ data:movies })
+
+})
+
+app.get('/movies/:id', (req, res) => {
+    const { params } = req;
+    const { id } = params;
+
+    const movieById = movies.filter((movie) => movie.id === parseInt(id))
+
+    if (movieById.length > 0){
+        res.json({
+            id: movieById[0].id,
+            title: movieById[0].title,
+            price: movieById[0].price,
+        })
+    } else{
+        res.status(404).json({
+            error: 'something went wrong'
+        })
+    }
 
 })
 
