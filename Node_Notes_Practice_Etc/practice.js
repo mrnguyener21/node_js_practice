@@ -31,7 +31,6 @@ const { title } = require('process')
 
 //EXPRESS
 const app = express()
-//using GET HTTP Method with express
 
 const movies = [
     {
@@ -39,13 +38,13 @@ const movies = [
         title: 'Christmas Movie',
         price: 100,        
     },
-
+    
     {
         id: 2,
         title: 'Halloween Movie',
         price: 200,        
     },
-
+    
     {
         id: 3,
         title: 'Birthday Movie',
@@ -53,7 +52,7 @@ const movies = [
     }
 ]
 
-//   ];
+//using GET HTTP Method with express
 app.get('/', (req,res) =>{
     res.send(`<h1>HOME PAGE</h1>`)
 });
@@ -64,11 +63,12 @@ app.get('/movies', (req, res) => {
 })
 
 app.get('/movies/:id', (req, res) => {
+    //need explanation of how these two works
     const { params } = req;
     const { id } = params;
 
     const movieById = movies.filter((movie) => movie.id === parseInt(id))
-
+    
     if (movieById.length > 0){
         res.json({
             id: movieById[0].id,
@@ -77,10 +77,31 @@ app.get('/movies/:id', (req, res) => {
         })
     } else{
         res.status(404).json({
-            error: 'something went wrong'
+            error: 'something went wrong grabbing by id'
         })
     }
 
+})
+
+app.get('/movies/:title', (req, res) => {
+const { params } = req;
+const { title } = params;
+
+const movieByTitle = movies.filter((movie) => movie.title === title)
+
+if (movieByTitle.length > 0){
+    res.json({
+        id: movieByTitle[0].id,
+        title: movieByTitle[0].title,
+        price: movieByTitle[0].price,
+        }
+    )
+} else {
+    res.status(404).json({
+        error: 'something went wrong grabbing by title',
+    })
+    console.log(movieByTitle)
+}
 })
 
 app.listen(8000, () => {
