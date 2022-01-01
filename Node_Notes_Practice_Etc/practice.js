@@ -2,6 +2,7 @@ const { dir } = require('console')
 const fs = require('fs')
 const http = require('http')
 const express = require('express')
+const { title } = require('process')
 
 
 //read a current file
@@ -31,4 +32,37 @@ const express = require('express')
 //EXPRESS
 const app = express()
 //using GET HTTP Method with express
-//testing working branch
+
+const movies = [
+    {
+        id: 1,
+        title: 'Christmas Movie',
+        price: 100,        
+    },
+
+    {
+        id: 2,
+        title: 'Halloween Movie',
+        price: 200,        
+    },
+
+    {
+        id: 3,
+        title: 'Birthday Movie',
+        price: 300,        
+    }
+]
+
+//   ];
+app.get('/', (req,res) =>{
+    res.send(`<h1>HOME PAGE</h1>`)
+});
+
+app.get('/movies', (req, res) => {
+    res.status(200).json({ data:movies })
+
+})
+
+app.listen(8000, () => {
+    console.log('server is started')
+})
