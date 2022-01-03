@@ -62,6 +62,11 @@ app.get('/movies', (req, res) => {
 
 })
 
+app.get('/test', (req, res) => {
+    res.status(200).json({ data:'test' })
+
+})
+
 app.get('/movies/:id', (req, res) => {
     //need explanation of how these two works
     const { params } = req;
