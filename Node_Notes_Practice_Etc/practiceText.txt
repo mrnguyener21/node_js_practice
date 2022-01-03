@@ -1,2 +1,7 @@
 hi, this text is just for practice
 
+//create query parameters
+
+//my issue was due to design issue. it goes through the id first and since it didn't have it, it went to my else which is error. this is usually avoide when designing the schema of the api before coding it
+//push calls
+//get postman
