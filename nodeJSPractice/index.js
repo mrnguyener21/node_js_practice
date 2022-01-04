@@ -46,7 +46,17 @@ app.get('/', (req,res) =>{
 app.get('/movies', (req, res) => {
     res.status(200).json({ data:movies })
     const queryParameters = req.query;
-    console.log(queryParameters)
+    // console.log(queryParameters)
+    //I need to create a list of the different types of properies each of my movie objects contain
+    //after that I need to then loop through it to see if they match with the query params
+    //if it matches then I have to just return the results and filter out the rests to stop the loop
+        
+        console.log(queryParameters.genre)
+        if (queryParameters.genre === 'holiday'){
+            console.log(true)
+        }
+
+        // const movieQueryParams = 
 
 })
 
