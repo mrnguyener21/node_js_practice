@@ -4,6 +4,7 @@ const http = require('http')
 const express = require('express')
 const { title } = require('process')
 const { query } = require('express')
+const { type } = require('express/lib/response')
 
 
 //EXPRESS
@@ -47,25 +48,37 @@ app.get('/', (req,res) =>{
 app.get('/movies', (req, res) => {
     res.status(200).json({ data:movies })
     const queryParameters = req.query;
+
     // console.log(queryParameters)
     //I need to create a list of the different types of properies each of my movie objects contain
     //after that I need to then loop through it to see if they match with the query params
     //if it matches then I have to just return the results and filter out the rests to stop the loop
+
     console.log('restarted')
+
     for (prop in movies[0]){
         // console.log(typeof(prop))
         // console.log(movies[prop],typeof(movies[prop]))
         if (queryParameters.hasOwnProperty(prop) === true){
             //I need to make an if else statement to determine if the value is numerical or a string within the filter
 
-          let test = movies.filter((movie) => movie[prop] === queryParameters[prop] ? console.log(true):console.log(false))
-          let test2 = movies.filter((movie) => console.log(typeof(movie[prop]), typeof(queryParameters[prop])))
-        //   let movieFilter =  movies.filter((movie) => movie[prop] === queryParameters[prop])
-           return test
 
+        // console.log(`query parameter type is ${typeof(queryParameters[prop])},${prop},${queryParameters[prop]}`)
         
+        // movies.filter((movie) => console.log(`movie object type is ${typeof(movie[prop])},${prop},${movie[prop]}`))
+        
+        movies.filter((movie) => {
+            if (movie[prop] === String){
+                console.log('movie prop is a string')
+            } else if (movie[prop] === Number){
+                console.log('movie prop is a number')
+            } else{
+                console.log('couldnt match data type')
+            }
+        })
         } else{
-            console.log(false)
+            // console.log('no property found in the object')
+            false
         }
     }
 
