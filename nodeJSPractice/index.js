@@ -5,6 +5,11 @@ const express = require('express')
 const { title } = require('process')
 const { query } = require('express')
 const { type } = require('express/lib/response')
+//cors allways request from any front end domain to access it. we can also specify this to restrict it's response to the front end request
+
+//try creating an API with a list of USERS and where when i click the button it will request the button to show the data from the back end and another button to hide 
+//the API call that i will be making will be with GET and query parameters
+//use both fetch and axios for api calls
 
 
 //EXPRESS
@@ -46,7 +51,7 @@ app.get('/', (req,res) =>{
 });
 
 app.get('/movies', (req, res) => {
-    res.status(200).json({ data:movies })
+    res.status(200).json({ data:movies })//everything after this won't run as this is considered a return
     const queryParameters = req.query;
 
     console.log('restarted')
@@ -63,6 +68,9 @@ app.get('/movies', (req, res) => {
     })
     console.log(filteredMovies)
 })
+
+
+
 
 
 // app.get('/movies/:genre', (req, res) => {
