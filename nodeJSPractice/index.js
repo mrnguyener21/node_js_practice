@@ -55,32 +55,35 @@ app.get('/movies', (req, res) => {
     //if it matches then I have to just return the results and filter out the rests to stop the loop
 
     console.log('restarted')
-
-    for (prop in movies[0]){
-        // console.log(typeof(prop))
-        // console.log(movies[prop],typeof(movies[prop]))
-        if (queryParameters.hasOwnProperty(prop) === true){
-            //I need to make an if else statement to determine if the value is numerical or a string within the filter
-
-
-        // console.log(`query parameter type is ${typeof(queryParameters[prop])},${prop},${queryParameters[prop]}`)
-        
-        // movies.filter((movie) => console.log(`movie object type is ${typeof(movie[prop])},${prop},${movie[prop]}`))
-        
-        movies.filter((movie) => {
-            if (movie[prop] === String){
-                console.log('movie prop is a string')
-            } else if (movie[prop] === Number){
-                console.log('movie prop is a number')
-            } else{
-                console.log('couldnt match data type')
-            }
-        })
-        } else{
-            // console.log('no property found in the object')
-            false
+    let filteredMovieList = () => {
+        for (prop in movies[0]){
+            // console.log(typeof(prop))
+            // console.log(movies[prop],typeof(movies[prop]))
+            // if (queryParameters.hasOwnProperty(prop) === true){
+                //I need to make an if else statement to determine if the value is numerical or a string within the filter
+    
+    
+            // console.log(`query parameter type is ${typeof(queryParameters[prop])},${prop},${queryParameters[prop]}`)
+            
+            // movies.filter((movie) => console.log(`movie object type is ${typeof(movie[prop])},${prop},${movie[prop]}`))
+            // console.log(movies[0])
+            movies.filter((movie) => {
+                if (Number.isInteger(movie[prop]) === true & movie[prop]  === parseInt(queryParameters[prop])){
+                    console.log(movie.id)
+                    console.log(movie.title)
+                    console.log(movie.price)
+                    console.log(movie.title)
+                    
+                    // movie[prop] === parseInt(queryParameters[prop])
+                } 
+            })
+            // console.log(movies)
+            // } else{
+                // console.log('no property found in the object')
+                // false
+            // }
         }
-    }
+    };
 
 
         // console.log(queryParameters.hasOwnProperty('genre'))
