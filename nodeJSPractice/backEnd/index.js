@@ -12,62 +12,78 @@ const { type } = require('express/lib/response')
 //use both fetch and axios for api calls
 
 
+
 //EXPRESS
 const app = express()
 
-const movies = [
-    {
-        id: 1,
-        title: 'Christmas Movie',
-        price: 100,
-        genre: 'holiday'        
-    },
+app.use("/movies/", require("./routes/route"))
+
+app.listen(8000, () => {
+    console.log('server is started')
+})
+
+
+
+
+
+
+
+
+
+// const movies = [
+//     {
+//         id: 1,
+//         title: 'Christmas Movie',
+//         price: 100,
+//         genre: 'holiday'        
+//     },
     
-    {
-        id: 2,
-        title: 'Halloween Movie',
-        price: 200,
-        genre: 'holiday'     
-    },
+//     {
+//         id: 2,
+//         title: 'Halloween Movie',
+//         price: 200,
+//         genre: 'holiday'     
+//     },
     
-    {
-        id: 3,
-        title: 'Birthday Movie',
-        price: 100,
-        genre: 'family'       
-    },
-    {
-        id: 4,
-        title: 'Horror Movie',
-        price: 150,
-        genre: 'horror'    
-    }
-]
+//     {
+//         id: 3,
+//         title: 'Birthday Movie',
+//         price: 100,
+//         genre: 'family'       
+//     },
+//     {
+//         id: 4,
+//         title: 'Horror Movie',
+//         price: 150,
+//         genre: 'horror'    
+//     }
+// ]
+
 
 //using GET HTTP Method with express
-app.get('/', (req,res) =>{
-    res.send(`<h1>HOME PAGE</h1>`)
-    // console.log('testing')
-});
+// app.get('/', (req,res) =>{
+//     res.send(`<h1>HOME PAGE</h1>`)
+//     console.log('home page')
+// });
 
-app.get('/movies', (req, res) => {
-    res.status(200).json({ data:movies })//everything after this won't run as this is considered a return
-    const queryParameters = req.query;
+// app.get('/movies', (req, res) => {
+//     res.status(200).json({ data:movies })//everything after this won't run as this is considered a return
+//     const queryParameters = req.query;
 
-    console.log('restarted')
+//     console.log('restarted')
 
-    let filteredMovies = ''
+//     let filteredMovies = ''
     
-    movies.filter((movie) => {
-        for (prop in movies[0]){
-            if (Number.isInteger(movie[prop]) === true & movie[prop]  === parseInt(queryParameters[prop])){
-                filteredMovies = movie
-                console.log(queryParameters)
-            } 
-        }
-    })
-    console.log(filteredMovies)
-})
+//     movies.filter((movie) => {
+//         for (prop in movies[0]){
+//             if (Number.isInteger(movie[prop]) === true & movie[prop]  === parseInt(queryParameters[prop])){
+//                 filteredMovies = movie
+//                 console.log(queryParameters)
+//             } 
+//         }
+//     })
+//     console.log(filteredMovies)
+// })
 
 
 
@@ -110,9 +126,9 @@ app.get('/movies', (req, res) => {
 // })
 
 
-app.listen(8000, () => {
-    console.log('server is started')
-})
+// app.listen(8000, () => {
+//     console.log('server is started')
+// })
 
 
 
