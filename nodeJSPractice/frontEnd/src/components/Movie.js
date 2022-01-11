@@ -5,18 +5,16 @@ const Movies = () => {
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
-        fetch("/movies/").then( res => {
+        fetch("/movies/").then(res => {
             if (res.ok){
-                return res.json
-            } else{
-                 return console.log('could not fetch')
+                return res.json()
             }
-        }).then (jsonRes => setMovies(jsonRes.movies))
+        }).then (jsonRes => setMovies(jsonRes.movieList))
     })
 
     return(
         <div>
-            {movies.map((movie) => <li>{movie}</li>)}
+            {movies.map((movie) => <li>{movie.title}</li>)}
             {console.log(movies)}
         </div>
     )

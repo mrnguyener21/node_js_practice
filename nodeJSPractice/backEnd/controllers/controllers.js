@@ -1,4 +1,4 @@
-const movies = [
+const movieList = [
     {
         id: 1,
         title: 'Christmas Movie',
@@ -27,6 +27,6 @@ const movies = [
     }
 ]
 
-exports.controller = (req, res) => {
-    res.json({movies})
+exports.controllers = (req, res) => {
+    res.json({movieList})
 }
